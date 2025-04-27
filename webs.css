@@ -1,0 +1,76 @@
+/* Smooth scrolling for anchor links */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Smooth fade-in for headings */
+.smooth-heading {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1s cubic-bezier(.4,0,.2,1), transform 1s cubic-bezier(.4,0,.2,1);
+}
+.smooth-heading.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Smooth fade-in for blog posts */
+.blog-post {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1s cubic-bezier(.4,0,.2,1), transform 1s cubic-bezier(.4,0,.2,1);
+}
+.blog-post.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Theme styles */
+:root {
+    --bg-color: #f9f9f9;
+    --text-color: #222;
+    --accent-color: #0078d7;
+    --card-bg: #fff;
+    --footer-bg: #222;
+    --footer-text: #fff;
+}
+
+body {
+    background: var(--bg-color);
+    color: var(--text-color);
+    transition: background 0.5s, color 0.5s;
+}
+
+.blog-post, .section-header, .container, .footer-logo {
+    background: var(--card-bg);
+    transition: background 0.5s, color 0.5s;
+}
+
+footer {
+    background: var(--footer-bg);
+    color: var(--footer-text);
+    transition: background 0.5s, color 0.5s;
+}
+
+/* Dark theme */
+body.dark-theme {
+    --bg-color: #181a1b;
+    --text-color: #f1f1f1;
+    --accent-color: #00b4d8;
+    --card-bg: #23272a;
+    --footer-bg: #101214;
+    --footer-text: #bbb;
+}
+
+#theme-toggle {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 1.2em;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: color 0.3s;
+}
+#theme-toggle:focus {
+    outline: 2px solid var(--accent-color);
+}
