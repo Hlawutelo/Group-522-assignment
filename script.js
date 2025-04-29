@@ -1,9 +1,31 @@
 // Mobile Menu Toggle
-const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-const navMenu = document.getElementById('navMenu');
+document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+    const navMenu = document.getElementById('navMenu');
+    const body = document.body;
 
-mobileMenuToggle.addEventListener('click', () => {
-    navMenu.classList.toggle('active');
+    // Toggle mobile menu
+    mobileMenuToggle.addEventListener('click', function() {
+        navMenu.parentElement.classList.toggle('active');
+        body.classList.toggle('menu-open');
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', function(event) {
+        if (!navMenu.contains(event.target) && !mobileMenuToggle.contains(event.target)) {
+            navMenu.parentElement.classList.remove('active');
+            body.classList.remove('menu-open');
+        }
+    });
+
+    // Close menu when clicking on a link
+    const navLinks = navMenu.querySelectorAll('a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            navMenu.parentElement.classList.remove('active');
+            body.classList.remove('menu-open');
+        });
+    });
 });
 
 // Dropdown Menu on Mobile
@@ -62,18 +84,56 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-// Trigger animation when section is in view
-const statsSection = document.querySelector('.stats');
+// Stats Counter Animation
+function animateStats() {
+    const statNumbers = document.querySelectorAll('.stat-number');
+    const statsSection = document.querySelector('.stats');
+    let animationStarted = false;
 
-window.addEventListener('scroll', function statsScrollHandler() {
-    const statsSectionTop = statsSection.getBoundingClientRect().top;
-    const windowHeight = window.innerHeight;
+    function startAnimation() {
+        if (animationStarted) return;
+        animationStarted = true;
 
-    if (statsSectionTop < windowHeight - 100) {
-        animateStats();
-        window.removeEventListener('scroll', statsScrollHandler);
+        statNumbers.forEach(stat => {
+            const target = parseInt(stat.getAttribute('data-count'));
+            const duration = 2000; // 2 seconds
+            const startTime = performance.now();
+            const startValue = 0;
+
+            function updateNumber(currentTime) {
+                const elapsedTime = currentTime - startTime;
+                const progress = Math.min(elapsedTime / duration, 1);
+                
+                // Easing function for smooth animation
+                const easeOutQuad = t => t * (2 - t);
+                const currentValue = Math.floor(easeOutQuad(progress) * target);
+
+                stat.textContent = currentValue;
+
+                if (progress < 1) {
+                    requestAnimationFrame(updateNumber);
+                }
+            }
+
+            requestAnimationFrame(updateNumber);
+        });
     }
-});
+
+    // Start animation when stats section is in view
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                startAnimation();
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    observer.observe(statsSection);
+}
+
+// Initialize the animation when the page loads
+document.addEventListener('DOMContentLoaded', animateStats);
 
 // Smooth Scrolling for Anchor Links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -181,26 +241,35 @@ function isValidEmail(email) {
 }
 
 // Dark Mode Toggle
-const darkModeToggle = document.querySelector('.dark-mode-toggle');
-const body = document.body;
+document.addEventListener('DOMContentLoaded', function() {
+    const darkModeToggle = document.querySelector('.dark-mode-toggle');
+    if (darkModeToggle) {
+        const body = document.body;
+        const icon = darkModeToggle.querySelector('i');
 
-darkModeToggle.addEventListener('click', () => {
-    body.classList.toggle('dark-mode');
+        // Check for saved dark mode preference
+        if (localStorage.getItem('darkMode') === 'true') {
+            body.classList.add('dark-mode');
+            icon.classList.remove('fa-moon');
+            icon.classList.add('fa-sun');
+        }
 
-    if (body.classList.contains('dark-mode')) {
-        darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-        localStorage.setItem('dark-mode', 'enabled');
-    } else {
-        darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
-        localStorage.setItem('dark-mode', 'disabled');
+        darkModeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            
+            // Toggle icon
+            if (body.classList.contains('dark-mode')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+                localStorage.setItem('darkMode', 'true');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+                localStorage.setItem('darkMode', 'false');
+            }
+        });
     }
 });
-
-// Check if dark mode was previously enabled
-if (localStorage.getItem('dark-mode') === 'enabled') {
-    body.classList.add('dark-mode');
-    darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-}
 
 // Smooth Heading and Blog Post Animation
 document.addEventListener("DOMContentLoaded", function() {

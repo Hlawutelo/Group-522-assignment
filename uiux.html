@@ -2,59 +2,56 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>UI/UX Blog</title>
-    <link rel="stylesheet" href="uiux.css">
-    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="UI Portfolio showcasing web development and design services">
+    <title>UI Portfolio | John Watson</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="uiux.css">
+    <link rel="stylesheet" href="Responsive.css">
 </head>
 <body>
-    <!-- Navigation Header Start -->
-    <header>
+    <!-- Header -->
+    <header role="banner">
         <div class="container">
-            <div class="navbar">
-                <a href="#" class="logo">
-                    <i class="fas fa-code"></i> UI Portfolio
+            <nav class="navbar" role="navigation" aria-label="Main navigation">
+                <a href="index.html" class="logo" aria-label="Home">
+                    <i class="fas fa-code" aria-hidden="true"></i> UI Portfolio
                 </a>
-                <button class="mobile-menu-toggle" id="mobileMenuToggle">
-                    <i class="fas fa-bars"></i>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" type="button" aria-label="Toggle menu" aria-expanded="false">
+                    <i class="fas fa-bars" aria-hidden="true"></i>
                 </button>
-                <nav>
-                    <ul id="navMenu">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="index.html#about">About</a></li>
-                        <li><a href="index.html#services">Services</a></li>
-                        <li><a href="index.html#Contact">Contact</a></li>
-                        <li class="dropdown">
-                            <a href="#">UI/UX Blog <i class="fa fa-caret-down"></i></a>
-                            <div class="dropdown-content">
-                                <!-- other blog categories -->
-                            </div>
-                        </li>
-                        <li>
-                            <a href="index.html#testimonials">Testimonials</a>
-                        </li>
-                        <li><a href="index.html#contact Us">Contact Us</a></li>
-                    </ul>
-                </nav>
+                <button class="mobile-menu-close" id="mobileMenuClose" style="display:none;" aria-label="Close menu">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <ul id="navMenu" role="menubar">
+                    <li role="none"><a href="index.html" role="menuitem">Home</a></li>
+                    <li role="none"><a href="index.html#about" role="menuitem">About</a></li>
+                    <li role="none"><a href="index.html#services" role="menuitem">Services</a></li>
+                    <li class="dropdown" role="none">
+                        <a href="#" role="menuitem" aria-haspopup="true">Blog <i class="fa fa-caret-down" aria-hidden="true"></i></a>
+                        <div class="dropdown-content" role="menu">
+                            <a href="uiux.html" role="menuitem">Blog</a>
+                        </div>
+                    </li>
+                    <li role="none"><a href="index.html#testimonials" role="menuitem">Testimonials</a></li>
+                    <li role="none"><a href="index.html#contact" role="menuitem">Contact Us</a></li>
+                </ul>
                 <div class="nav-buttons">
-                    <button class="search-toggle">
-                        <i class="fas fa-search"></i>
+                    <button class="dark-mode-toggle" type="button" aria-label="Toggle dark mode">
+                        <i class="fas fa-moon" aria-hidden="true"></i>
                     </button>
-                    <button class="dark-mode-toggle">
-                        <i class="fas fa-moon"></i>
-                    </button>
-                </div>
-            </div>
+                </div
+            </nav>
         </div>
     </header>
     <!-- Navigation Header End -->
+
     <main class="uiux-container">
-        
         <article class="uiux-article">
-            <h2>UI/UX Blog</h2>
-            <p>Insights, trends, and best practices in User Interface & User Experience Design</p>
+            <h1>UI/UX Blog</h1>
+            <p class="lead">Insights, trends, and best practices in User Interface & User Experience Design</p>
             <div class="uiux-section-title">Featured Articles</div>
-            
         </article>
         <article class="uiux-article">
             <h2>What is UX?</h2>
@@ -109,41 +106,75 @@
             </div>
         </article>
     </main>
+
     <footer>
         <div class="container">
-            <div style="text-align: center;">
-                <a href="#" class="footer-logo">
-                    <i class="fas fa-code"></i> UI Portfolio
-                </a>
-            </div>
-            
-            <div class="footer-contact">
-                <div class="contact-item">
-                    <i class="fas fa-phone"></i>
-                    <span>+12 345 678 900</span>
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="index.html" class="footer-logo">
+                        <i class="fas fa-code"></i> UI Portfolio
+                    </a>
                 </div>
-                <div class="contact-item">
-                    <i class="fas fa-envelope"></i>
-                    <span>info@example.com</span>
+                
+                <div class="footer-contact">
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+21 234 567 1111</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>example@mail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>208 Avenue street, UK - 62617</span>
+                    </div>
                 </div>
-                <div class="contact-item">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <span>208 Avenue street, UK - 62617</span>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2025 UI Portfolio. All Rights Reserved</p>
-                <div class="social-icons">
-                    <a href="https://facebook.com" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://twitter.com" target="_blank" rel="noopener"><i class="fab fa-twitter"></i></a>
-                    <a href="https://plus.google.com" target="_blank" rel="noopener"><i class="fab fa-google-plus-g"></i></a>
-                    <a href="https://pinterest.com" target="_blank" rel="noopener"><i class="fab fa-pinterest"></i></a>
-                    <a href="https://weixin.qq.com" target="_blank" rel="noopener"><i class="fab fa-weixin"></i></a>
-                    <a href="https://linkedin.com" target="_blank" rel="noopener"><i class="fab fa-linkedin-in"></i></a>
+                
+                <div class="footer-bottom">
+                    <p>&copy; 2025 UI Portfolio. All Rights Reserved</p>
+                    <div class="social-icons">
+                        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://pinterest.com" target="_blank" rel="noopener noreferrer" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+                    </div>
                 </div>
             </div>
         </div>
     </footer>
+    <script>
+        // Dark Mode Toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const darkModeToggle = document.querySelector('.dark-mode-toggle');
+            if (darkModeToggle) {
+                const body = document.body;
+                const icon = darkModeToggle.querySelector('i');
+
+                // Check for saved dark mode preference
+                if (localStorage.getItem('darkMode') === 'true') {
+                    body.classList.add('dark-mode');
+                    icon.classList.remove('fa-moon');
+                    icon.classList.add('fa-sun');
+                }
+
+                darkModeToggle.addEventListener('click', () => {
+                    body.classList.toggle('dark-mode');
+                    
+                    // Toggle icon
+                    if (body.classList.contains('dark-mode')) {
+                        icon.classList.remove('fa-moon');
+                        icon.classList.add('fa-sun');
+                        localStorage.setItem('darkMode', 'true');
+                    } else {
+                        icon.classList.remove('fa-sun');
+                        icon.classList.add('fa-moon');
+                        localStorage.setItem('darkMode', 'false');
+                    }
+                });
+            }
+        });
+    </script>
+    <script src="script.js"></script>
 </body>
 </html>
