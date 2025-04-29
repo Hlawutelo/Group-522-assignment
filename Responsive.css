@@ -1,5 +1,8 @@
-/* Responsive Styles */
+/* ===== RESPONSIVE STYLES ===== */
+
+/* Large Devices (992px and below) */
 @media (max-width: 992px) {
+    /* Hero Section */
     .hero-content {
         flex-direction: column;
         text-align: center;
@@ -14,28 +17,35 @@
         justify-content: center;
     }
     
+    /* About Section */
     .about-content {
         flex-direction: column;
     }
     
-    .service-grid {
-        grid-template-columns: repeat(2, 1fr);
+    /* Services Section */
+    .service-card {
+        flex: 1 1 250px;
+        max-width: 350px;
     }
     
     .services-grid {
         grid-template-columns: repeat(2, 1fr);
     }
     
+    /* Portfolio Section */
     .portfolio-grid {
         grid-template-columns: repeat(2, 1fr);
     }
     
+    /* Stats Section */
     .stats-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
+/* Medium Devices (768px and below) */
 @media (max-width: 768px) {
+    /* Navigation */
     .mobile-menu-toggle {
         display: block;
     }
@@ -49,7 +59,7 @@
         right: 0;
         background-color: var(--dark-bg);
         padding: 20px;
-        transition: all 0.3s ease;
+        transition: var(--transition);
     }
     
     nav ul.active {
@@ -60,6 +70,7 @@
         margin: 10px 0;
     }
     
+    /* Dropdown Menu */
     .dropdown-content {
         position: static;
         background-color: transparent;
@@ -76,20 +87,75 @@
         display: block;
     }
     
-    .service-grid {
-        grid-template-columns: 1fr;
+    /* Services Section */
+    .service-card {
+        flex: 1 1 100%;
+        max-width: 100%;
     }
     
     .services-grid {
         grid-template-columns: 1fr;
     }
     
+    /* Portfolio Grid */
     .portfolio-grid {
         grid-template-columns: 1fr;
     }
     
+    /* Contact Form */
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Footer */
     .footer-bottom {
         flex-direction: column;
         gap: 15px;
+        text-align: center;
+    }
+    
+    .footer-contact {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* Small Devices (576px and below) */
+@media (max-width: 576px) {
+    /* Hero Section */
+    .hero-text h1 {
+        font-size: 32px;
+    }
+    
+    .hero-text h2 {
+        font-size: 48px;
+    }
+    
+    /* About Section */
+    .about-info {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Testimonials */
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Stats */
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Services Section */
+    .service-card {
+        padding: 20px;
+    }
+    
+    .service-title {
+        font-size: 20px;
+    }
+    
+    .service-icon {
+        font-size: 32px;
     }
 }
